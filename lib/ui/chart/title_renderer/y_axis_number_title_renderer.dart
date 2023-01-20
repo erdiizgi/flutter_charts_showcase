@@ -1,7 +1,7 @@
-import 'package:flutter_chart_sample/ui/chart/side_title_renderer.dart';
+import 'package:flutter_chart_sample/ui/chart/title_renderer/side_title_renderer.dart';
 import 'package:intl/intl.dart';
 
-class YAxisPriceTitleRenderer extends SideTitleRenderer {
+class YAxisNumberTitleRenderer extends SideTitleRenderer {
   @override
   String convert(double value) {
     return getShortForm(value);

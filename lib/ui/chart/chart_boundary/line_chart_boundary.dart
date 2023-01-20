@@ -1,18 +1,11 @@
-import 'package:flutter_chart_sample/data/entity/crypto_price.dart';
+import 'package:flutter_chart_sample/core/entity/crypto_price.dart';
 
-class LineChartBoundary {
+import 'base_chart_boundary.dart';
+
+class LineChartBoundary extends BaseChartBoundary {
   final List<CryptoPrice> prices;
 
-  double minX;
-  double maxX;
-  double minY;
-  double maxY;
-
-  LineChartBoundary(this.prices)
-      : minX = 0,
-        maxX = 10,
-        minY = 0,
-        maxY = 10;
+  LineChartBoundary(this.prices) : super();
 
   void init() {
     minY = 0;

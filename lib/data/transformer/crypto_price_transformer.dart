@@ -1,4 +1,4 @@
-import 'package:flutter_chart_sample/data/entity/crypto_price.dart';
+import 'package:flutter_chart_sample/core/entity/crypto_price.dart';
 import 'package:flutter_chart_sample/data/transformer/transformer_utils.dart';
 
 class CryptoPriceTransformer {

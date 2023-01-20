@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chart_sample/service/crypto_info_service.dart';
 import 'package:flutter_chart_sample/ui/routes/overview_page.dart';
 
 void main() {

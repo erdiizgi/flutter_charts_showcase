@@ -1,5 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter_chart_sample/data/entity/crypto_price.dart';
+import 'package:flutter_chart_sample/core/entity/crypto_price.dart';
 
 class PriceToChartDataConverter {
   final List<CryptoPrice> prices;

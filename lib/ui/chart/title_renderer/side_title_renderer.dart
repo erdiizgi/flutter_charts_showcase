@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+// title renderer abstraction which compatible with fl charts
 abstract class SideTitleRenderer {
   SideTitleWidget render(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -15,5 +16,6 @@ abstract class SideTitleRenderer {
     );
   }
 
+  // converts value to title
   String convert(double value);
 }

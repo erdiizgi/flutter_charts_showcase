@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// convenience widget for holding the charts
 class CardWithTitle extends StatelessWidget {
   final String title;
   final Widget content;

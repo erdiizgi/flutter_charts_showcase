@@ -4,10 +4,12 @@ import 'package:flutter_chart_sample/ui/widgets/overview/base/pie_chart_data_ent
 
 import 'indicator.dart';
 
+// base class for any pie chart implementation
 class BasePieChart extends StatefulWidget {
   final List<PieChartDataEntry> data;
+  final double limit;
 
-  const BasePieChart(this.data, {super.key});
+  const BasePieChart(this.data, {super.key, this.limit = 0});
 
   @override
   State<StatefulWidget> createState() => BasePieChartState();
@@ -68,7 +70,7 @@ class BasePieChartState extends State<BasePieChart> {
       return PieChartSectionData(
         color: entry!.color,
         value: entry.value,
-        title: entry.title,
+        title: entry.value >= widget.limit ? entry.title : "",
         radius: radius,
         titleStyle: TextStyle(
           fontSize: fontSize,
@@ -88,7 +90,7 @@ class BasePieChartState extends State<BasePieChart> {
           child: Indicator(
             color: data.color,
             text: data.name,
-            isSquare: true,
+            isSquare: false,
           ),
         ),
       );

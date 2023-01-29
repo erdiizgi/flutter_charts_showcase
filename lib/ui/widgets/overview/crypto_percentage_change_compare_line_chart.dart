@@ -5,12 +5,14 @@ import 'package:flutter_chart_sample/ui/chart/chart_boundary/base_chart_boundary
 import 'package:flutter_chart_sample/ui/chart/chart_boundary/boundaries.dart';
 import 'package:flutter_chart_sample/ui/chart/title_renderer/x_axis_month_title_renderer.dart';
 
-import '../../chart/chart_boundary/percentage_line_chart_boundary.dart';
-import '../../chart/converter/price_to_percentage_chart_data_converter.dart';
+import '../../chart/chart_boundary/line_chart_boundary.dart';
+import '../../chart/converter/chart_data_converter.dart';
 import '../../chart/title_renderer/y_axis_number_title_renderer.dart';
 import 'base/base_line_chart.dart';
 import 'base/chart_utils.dart';
 
+// creates a line chart that compares two crypto asset based on their percentage
+// change.
 class CryptoPercentageChangeCompareLineChart extends BaseLineChart {
   final List<CryptoPercentageChange>? percentageChangesForFirst;
   final List<CryptoPercentageChange>? percentageChangesForSecond;
@@ -21,16 +23,14 @@ class CryptoPercentageChangeCompareLineChart extends BaseLineChart {
 
   @override
   BaseChartBoundary calculateBoundary() {
-    var boundaryFirst = PercentageLineChartBoundary(percentageChangesForFirst!);
-    boundaryFirst.init();
+    var first = LineChartBoundary(
+        percentageChangesForFirst!, (element) => element.percentageChange);
+    first.init();
+    var second = LineChartBoundary(
+        percentageChangesForSecond!, (element) => element.percentageChange);
+    second.init();
 
-    var boundarySecond =
-        PercentageLineChartBoundary(percentageChangesForSecond!);
-    boundarySecond.init();
-
-    var boundaries = Boundaries(boundaryFirst, boundarySecond);
-    var boundary = boundaries.convolute();
-    return boundary;
+    return Boundaries.convolute(first, second);
   }
 
   @override
@@ -54,9 +54,9 @@ class CryptoPercentageChangeCompareLineChart extends BaseLineChart {
   }
 
   LineChartBarData firstBarData() {
-    var converter = PercentageToChartDataConverter(percentageChangesForFirst!, 10);
-    converter.convert();
-    return _createBarData(const Color(0xff00BCD4), converter.data);
+    var data = ChartDataConverter.convert(
+        percentageChangesForFirst!, (element) => element.percentageChange, 10);
+    return _createBarData(const Color(0xff00BCD4), data);
   }
 
   LineChartBarData _createBarData(Color color, List<FlSpot> spots) {
@@ -72,9 +72,8 @@ class CryptoPercentageChangeCompareLineChart extends BaseLineChart {
   }
 
   LineChartBarData secondBarData() {
-    var converter = PercentageToChartDataConverter(percentageChangesForSecond!, 10);
-    converter.convert();
-
-    return _createBarData(const Color(0xff673AB7), converter.data);
+    var data = ChartDataConverter.convert(
+        percentageChangesForSecond!, (element) => element.percentageChange, 10);
+    return _createBarData(const Color(0xff673AB7), data);
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter_chart_sample/core/entity/crypto_asset.dart';
 import 'package:flutter_chart_sample/core/entity/crypto_price.dart';
 import 'package:flutter_chart_sample/data/http_util.dart';
-import 'package:flutter_chart_sample/data/transformer/crypto_asset_transformer.dart';
-import 'package:flutter_chart_sample/data/transformer/crypto_price_transformer.dart';
+import 'package:flutter_chart_sample/data/parser/crypto_asset_parser.dart';
+import 'package:flutter_chart_sample/data/parser/crypto_price_parser.dart';
 
+// connection point to the coin cap api
 class CoinCapApi {
   static const String btcDailyHistoryUrl =
       "https://api.coincap.io/v2/assets/bitcoin/history?interval=d1";
@@ -14,16 +15,18 @@ class CoinCapApi {
 
   Future<List<CryptoPrice>> fetchDailyBtcHistory() async {
     String response = await HttpUtil.httpGet(btcDailyHistoryUrl);
-    return CryptoPriceTransformer.fromJson(response);
+    return CryptoPriceParser.fromJson(response);
   }
 
   Future<List<CryptoPrice>> fetchDailyEthHistory() async {
     String response = await HttpUtil.httpGet(ethDailyHistoryUrl);
-    return CryptoPriceTransformer.fromJson(response);
+    return CryptoPriceParser.fromJson(response);
   }
 
   Future<List<CryptoAsset>> fetchTop8CoinAssets() async {
     String response = await HttpUtil.httpGet(top8CoinAssetUrl);
-    return CryptoAssetTransformer.fromJson(response);
+    return CryptoAssetParser.fromJson(response);
   }
+
+  const CoinCapApi();
 }

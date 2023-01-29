@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 
+// contains util methods and objects for fl_charts
 class ChartUtils {
 
   static AxisTitles noTitles = AxisTitles(

@@ -9,6 +9,7 @@ import 'package:flutter_chart_sample/ui/widgets/overview/base/chart_utils.dart';
 import '../../chart/chart_boundary/bar_chart_boundary.dart';
 import '../../chart/chart_boundary/base_chart_boundary.dart';
 
+// crypto bar chart, it can represent any value-crypto graph
 class Crypto24hPercentageChangeBarChart extends BaseBarChart {
   final Color positiveBarColor = const Color(0xff00BCD4);
   final Color negativeBarColor = const Color(0xffb73a85);
@@ -41,13 +42,13 @@ class Crypto24hPercentageChangeBarChart extends BaseBarChart {
     List<BarChartGroupData> data = [];
 
     for (var asset in assets) {
-      data.add(createBarChartGroupData(asset.rank, asset.changePercent24Hr));
+      data.add(_createBarChartGroupData(asset.rank, asset.changePercent24Hr));
     }
 
     return data;
   }
 
-  BarChartGroupData createBarChartGroupData(int x, double y) {
+  BarChartGroupData _createBarChartGroupData(int x, double y) {
     return BarChartGroupData(
       barsSpace: 4,
       x: x,

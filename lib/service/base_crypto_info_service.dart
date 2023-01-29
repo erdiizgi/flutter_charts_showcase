@@ -1,9 +1,11 @@
 import '../core/entity/compare_percentage_change.dart';
 import '../core/entity/crypto_asset.dart';
-import '../core/entity/crypto_price.dart';
 import '../core/entity/crypto_percentage_change.dart';
+import '../core/entity/crypto_price.dart';
 import '../core/transformer/crypto_price_to_percentage_change_transformer.dart';
 
+// service that helps to receive crypto information, mind that this abstraction
+// does not depend on any api, keep it that way!
 abstract class BaseCryptoInfoService {
   Future<List<CryptoPrice>> fetchDailyBtcHistory();
 
@@ -11,16 +13,16 @@ abstract class BaseCryptoInfoService {
 
   Future<List<CryptoAsset>> fetchTop8CoinAssets();
 
+  const BaseCryptoInfoService();
+
   Future<List<CryptoPercentageChange>> fetchDailyBtcPercentage() async {
     var history = await fetchDailyBtcHistory();
-    var transformer = CryptoPriceToPctChangeTransformer(history);
-    return transformer.transform();
+    return CryptoPriceToPctChangeTransformer.transform(history);
   }
 
   Future<List<CryptoPercentageChange>> fetchDailyEthPercentage() async {
     var history = await fetchDailyEthHistory();
-    var transformer = CryptoPriceToPctChangeTransformer(history);
-    return transformer.transform();
+    return CryptoPriceToPctChangeTransformer.transform(history);
   }
 
   Future<CompareCryptoPercentageChange> fetchBtcVsEthPercentageChange() async {

@@ -22,14 +22,14 @@ class AssetToPieChartDataConverter {
   PieChartDataEntry convertAsset(CryptoAsset asset, double totalValue) {
     var color = generateColor(asset.name);
     return PieChartDataEntry(
-        findPercentage(propertyFinder(asset), totalValue), asset.name, color!);
+        findPercentage(propertyFinder(asset), totalValue), asset.name, color);
   }
 
-  double findPercentage(double number, double total) {
+  static double findPercentage(double number, double total) {
     return (number / total) * 100;
   }
 
-  Color generateColor(String inputString) {
+  static Color generateColor(String inputString) {
     final int seed = inputString.hashCode;
     final Random random = Random(seed + 156);
     const List<Color> materialPaletteColors = [

@@ -3,8 +3,9 @@ import '../core/entity/crypto_price.dart';
 import '../data/coin_cap_api.dart';
 import 'base_crypto_info_service.dart';
 
-class CryptoInfoService extends BaseCryptoInfoService {
-  final CoinCapApi coinCapApi = CoinCapApi();
+// service that provides crypto information based on coin cap api
+class CoinCapApiService extends BaseCryptoInfoService {
+  final CoinCapApi coinCapApi = const CoinCapApi();
 
   @override
   Future<List<CryptoPrice>> fetchDailyBtcHistory() async {
@@ -20,4 +21,6 @@ class CryptoInfoService extends BaseCryptoInfoService {
   Future<List<CryptoAsset>> fetchTop8CoinAssets() async {
     return await coinCapApi.fetchTop8CoinAssets();
   }
+
+  const CoinCapApiService() : super();
 }

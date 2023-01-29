@@ -4,6 +4,7 @@ import 'package:flutter_chart_sample/ui/widgets/overview/base/chart_utils.dart';
 
 import '../../../chart/chart_boundary/base_chart_boundary.dart';
 
+// base class for any bar chart implementation
 abstract class BaseBarChart extends StatelessWidget {
   const BaseBarChart({super.key});
 

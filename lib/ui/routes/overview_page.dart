@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chart_sample/service/base_crypto_info_service.dart';
 import 'package:flutter_chart_sample/ui/widgets/overview/overview_widget.dart';
 
+import '../../service/crypto_info_service.dart';
+
 class OverViewPage extends StatelessWidget {
+  static const BaseCryptoInfoService service = CoinCapApiService();
+
   final String title;
 
   const OverViewPage(this.title, {super.key});
@@ -10,11 +15,9 @@ class OverViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(title),
       ),
-      body: OverviewWidget(),
+      body: const OverviewWidget(service),
     );
   }
 }

@@ -1,16 +1,16 @@
 # flutter_chart_sample
 
-A new Flutter project.
+It is a showcasing application on how to use fl_charts package within your projects
 
-## Getting Started
+## Current state
 
-This project is a starting point for a Flutter application.
+It is roughly refactored but it still needs better structuring. Especially with the
+styling. Magic values are everywhere and it is not advised to have magic values all
+around your code.
 
-A few resources to get you started if this is your first Flutter project:
+## Contribution
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+You can try to showcase different charts such as scattered graphs.
+You can also improve the current code base and make it more useful for others.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+

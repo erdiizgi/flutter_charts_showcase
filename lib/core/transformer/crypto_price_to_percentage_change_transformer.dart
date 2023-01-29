@@ -1,14 +1,11 @@
 import 'package:flutter_chart_sample/core/entity/crypto_price.dart';
 import 'package:flutter_chart_sample/core/entity/crypto_percentage_change.dart';
 
+// transforms the list of crypto prices to changes in percentage
 class CryptoPriceToPctChangeTransformer {
-  final List<CryptoPrice> prices;
+  static List<CryptoPercentageChange> transform(List<CryptoPrice> prices) {
+    List<CryptoPercentageChange> changes = [];
 
-  List<CryptoPercentageChange> changes = [];
-
-  CryptoPriceToPctChangeTransformer(this.prices);
-
-  List<CryptoPercentageChange> transform() {
     for (int i = 1; i < prices.length; i++) {
       changes.add(
         CryptoPercentageChange(
@@ -23,4 +20,6 @@ class CryptoPriceToPctChangeTransformer {
   static double _percentageChange(double oldValue, double newValue) {
     return ((newValue - oldValue) / oldValue) * 100;
   }
+
+  CryptoPriceToPctChangeTransformer._();
 }

@@ -2,6 +2,7 @@ import 'package:flutter_chart_sample/ui/chart/title_renderer/side_title_renderer
 
 import '../../../core/entity/crypto_asset.dart';
 
+// title renderer for a bar chart, convert rank to crypto symbol.
 class XAxisCryptoAssetSymbolRenderer extends SideTitleRenderer {
   final List<CryptoAsset> assets;
 

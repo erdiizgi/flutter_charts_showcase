@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../chart/chart_boundary/base_chart_boundary.dart';
 import 'chart_utils.dart';
 
+// base class for any line chart implementation
 abstract class BaseLineChart extends StatelessWidget {
   final int titlesOnXAxis;
   final int titlesOnYAxis;

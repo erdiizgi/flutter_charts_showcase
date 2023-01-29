@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// represents an indicator for the pie charts
 class Indicator extends StatelessWidget {
   const Indicator({
     super.key,

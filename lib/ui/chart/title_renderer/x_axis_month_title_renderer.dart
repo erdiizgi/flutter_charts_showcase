@@ -1,6 +1,7 @@
 import 'package:flutter_chart_sample/ui/chart/title_renderer/side_title_renderer.dart';
 import 'package:intl/intl.dart';
 
+// title renderer for the short form of month names
 class XAxisMonthTitleRenderer extends SideTitleRenderer {
   final DateTime initialDate;
 
